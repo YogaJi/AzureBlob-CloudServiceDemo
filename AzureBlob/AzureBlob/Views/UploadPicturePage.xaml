@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AzureBlob.Views.UploadPicturePage"
+             xmlns:viewmodels="clr-namespace:AzureBlob.ViewModels"
+             xmlns:models="clr-namespace:AzureBlob.Models"  
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             Title="title1">
+    
+    <ContentPage.BindingContext>
+        <viewmodels:UploadPictureViewModel/>
+    </ContentPage.BindingContext>
+
+
+    <ContentPage.Content>
+        <StackLayout Margin="20" VerticalOptions="StartAndExpand">
+            <Label x:Name="resultsLabel"  Text="Picture:" FontSize="Medium" />
+            <Image Source="https://image.shutterstock.com/image-photo/picture-beautiful-view-birds-260nw-1836263689.jpg" />
+            <Button x:Name="uploadButton" Text="Upload Picture" Command="{Binding UploadPictureCommand}" />
+            <Button x:Name="downloadButton" Text="Download Picture" Command="{Binding DownloadPictureCommand}" />
+            <Image Source="{Binding DownloadPicture}" />
+        </StackLayout>
+    </ContentPage.Content>
+
+
+</ContentPage>

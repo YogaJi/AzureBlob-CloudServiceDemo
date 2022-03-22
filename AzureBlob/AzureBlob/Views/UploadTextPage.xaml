@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AzureBlob.Views.UploadTextPage"
+             xmlns:viewmodels="clr-namespace:AzureBlob.ViewModels"
+             xmlns:models="clr-namespace:AzureBlob.Models"  
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             Title="title2">
+
+    <ContentPage.BindingContext>
+        <viewmodels:UploadTextViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout Margin="20" VerticalOptions="StartAndExpand">
+            <Label Text="Text:" FontSize="Medium" />
+            <Editor Placeholder="Enter text here" PlaceholderColor="Olive" ></Editor>
+            <Button Text="Upload Text" Command="{Binding UploadTextCommand}" />
+            <Button Text="Download Text" Command="{Binding DownloadTextCommand}" />
+            <Label Text= "{Binding DownloadText}" FontSize="Medium" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
