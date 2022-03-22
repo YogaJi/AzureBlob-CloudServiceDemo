@@ -67,30 +67,40 @@ namespace AzureBlob.Services
         {
             var texts = new List<Text>()
             {
-                new Text { Id = "1", Content = "default content" }
+                new Text { Id = 1, Content = "default content" }
             };
 
             return texts;
         }
 
-        public Task AddText(Text text)
+        public async Task AddText(Text text)
         {
-            throw new NotImplementedException();
+            var texts = await ReadFileText();
+            texts.Add(text);
+
+            await WriteFileText(texts);
         }
 
-        public Task<Text> GetText()
+        public async Task<Text> GetText()
         {
-            throw new NotImplementedException();
+            var texts = await ReadFileText();
+
+            return texts[1];
         }
 
-        public Task<IEnumerable<Text>> GetTexts()
+        public async Task<IEnumerable<Text>> GetTexts()
         {
-            throw new NotImplementedException();
+            var texts = await ReadFileText();
+
+            return texts;
         }
 
-        public Task UpdateText(Text text)
+        public async Task UpdateText(Text text)
         {
-            throw new NotImplementedException();
+            var texts = await ReadFileText();
+            texts[0] = text;
+
+            await WriteFileText(texts);
         }
     }
 }

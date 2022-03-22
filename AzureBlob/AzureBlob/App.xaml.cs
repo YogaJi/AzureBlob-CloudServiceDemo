@@ -11,6 +11,7 @@ namespace AzureBlob
         {
             InitializeComponent();
             DependencyService.Register<UploadBlobStorage>();
+            DependencyService.Register<UploadTextBlobStorage>();
             MainPage = new AppShell();
         }
 

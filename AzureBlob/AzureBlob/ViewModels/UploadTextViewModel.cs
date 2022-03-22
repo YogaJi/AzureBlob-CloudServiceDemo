@@ -7,53 +7,63 @@ using MvvmHelpers;
 using AzureBlob.Models;
 using AzureBlob.Services;
 using MvvmHelpers.Commands;
+using System.Threading.Tasks;
+using System.Diagnostics;
+using Text = AzureBlob.Models.Text;
 
 namespace AzureBlob.ViewModels
 {
-    public class UploadTextViewModel : UploadBaseViewModel
+    public class UploadTextViewModel : TextBaseViewModel
     {
-        public ITextDataStore<Text> TextDataStore => DependencyService.Get<ITextDataStore<Text>>();
+        public ObservableRangeCollection<Text> Texts { get; set; }
+        public AsyncCommand UploadTextCommand { get; }
+        public AsyncCommand DownloadTextCommand { get; }
+
+        private string downloadText;
+        public string DownloadText
+        {
+            get => downloadText;
+            set => SetProperty(ref downloadText, value);
+        }
         public UploadTextViewModel()
-        {
-             public ObservableRangeCollection<Image> Images { get; set; }
-        public AsyncCommand UploadPictureCommand { get; }
-        public AsyncCommand DownloadPictureCommand { get; }
 
-        private Uri downloadPicture;
-        public Uri DownloadPicture
         {
-            get => downloadPicture;
-            set => SetProperty(ref downloadPicture, value);
+            UploadTextCommand = new AsyncCommand(Upload);
+            DownloadTextCommand = new AsyncCommand(Download);
         }
 
-        public UploadPictureViewModel()
+        private string content;
+
+
+        public string Content
         {
-            UploadPictureCommand = new AsyncCommand(Upload);
-            DownloadPictureCommand = new AsyncCommand(Download);
+            get => content;
+            set => SetProperty(ref content, value);
         }
+
         async Task Upload()
         {
-            Image image = new Image
-            { Uri = new Uri("https://image.shutterstock.com/image-photo/picture-beautiful-view-birds-260nw-1836263689.jpg"), Title = "default picture" };
-            await ImageDataStore.AddImage(image);
+            Text text = new Text{ Id = 1, Content = "This is a text." };
+            await TextDataStore.AddText(text);
         }
         async Task Download()
         {
-
-            //Images.Clear();
-            //load
-            LoadImages();
+            LoadTexts();
         }
-        public async void LoadImages()
+        public async void LoadTexts()
         {
-            //IEnumerable<Image> images = await ImageDataStore.GetImages();
-            //Images.AddRange(images);
-            Image image = await ImageDataStore.GetImage();
+            try
+            {
+                Text text = await TextDataStore.GetText();
 
-            DownloadPicture = image.Uri;
-
+                DownloadText = text.Content;
+            }
+            catch (Exception)
+            {
+                Debug.WriteLine("Failed to Load Item");
+            }
         }
 
     }
-    }
+    
 }

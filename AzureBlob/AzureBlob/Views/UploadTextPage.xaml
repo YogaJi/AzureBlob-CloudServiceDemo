@@ -14,7 +14,7 @@
     <ContentPage.Content>
         <StackLayout Margin="20" VerticalOptions="StartAndExpand">
             <Label Text="Text:" FontSize="Medium" />
-            <Editor Placeholder="Enter text here" PlaceholderColor="Olive" ></Editor>
+            <Label Text="This is a text." FontSize="Medium" />
             <Button Text="Upload Text" Command="{Binding UploadTextCommand}" />
             <Button Text="Download Text" Command="{Binding DownloadTextCommand}" />
             <Label Text= "{Binding DownloadText}" FontSize="Medium" />
