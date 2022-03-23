@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
 using Xamarin.Forms;
 using MvvmHelpers;
 using AzureBlob.Models;
@@ -10,6 +11,8 @@ using MvvmHelpers.Commands;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using Text = AzureBlob.Models.Text;
+using Xamarin.Essentials;
+using Command = Xamarin.Forms.Command;
 
 namespace AzureBlob.ViewModels
 {
@@ -26,8 +29,8 @@ namespace AzureBlob.ViewModels
             set => SetProperty(ref downloadText, value);
         }
         public UploadTextViewModel()
-
         {
+            
             UploadTextCommand = new AsyncCommand(Upload);
             DownloadTextCommand = new AsyncCommand(Download);
         }
@@ -43,7 +46,7 @@ namespace AzureBlob.ViewModels
 
         async Task Upload()
         {
-            Text text = new Text{ Id = 1, Content = "This is a text." };
+            Text text = new Text{ Id = 1, Content = "" };
             await TextDataStore.AddText(text);
         }
         async Task Download()
@@ -64,6 +67,7 @@ namespace AzureBlob.ViewModels
             }
         }
 
+ 
     }
     
 }

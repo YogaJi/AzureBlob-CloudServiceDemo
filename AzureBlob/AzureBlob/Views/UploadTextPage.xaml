@@ -14,10 +14,14 @@
     <ContentPage.Content>
         <StackLayout Margin="20" VerticalOptions="StartAndExpand">
             <Label Text="Text:" FontSize="Medium" />
-            <Label Text="This is a text." FontSize="Medium" />
-            <Button Text="Upload Text" Command="{Binding UploadTextCommand}" />
-            <Button Text="Download Text" Command="{Binding DownloadTextCommand}" />
+            <Label x:Name="Textfilename" Text="Choose a text file" FontSize="Medium" />
+            <Button x:Name="uploadButton" Text="Upload Text" Clicked="Button_Clicked"/>
+            <Button Text="Download Text" Clicked="Download_Clicked"  />
             <Label Text= "{Binding DownloadText}" FontSize="Medium" />
+            <Label Text="" x:Name="resultsLabel" HorizontalTextAlignment="Center" Margin="0,20,0,0" TextColor="Red" />
         </StackLayout>
     </ContentPage.Content>
+    
+
+    
 </ContentPage>

@@ -4,7 +4,7 @@
              x:Class="AzureBlob.Views.UploadTextFilePage"
              xmlns:viewmodels="clr-namespace:AzureBlob.ViewModels"
              xmlns:models="clr-namespace:AzureBlob.Models"  
-             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit" xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              Title="title3">
 
     <ContentPage.BindingContext>
@@ -12,13 +12,36 @@
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
-        <StackLayout Margin="20" VerticalOptions="StartAndExpand">
+        <StackLayout Margin="20" VerticalOptions="Start">
             <Label Text="Text:" FontSize="Medium" />
-            <Editor Placeholder="Enter text here" PlaceholderColor="Olive" ></Editor>
+            <Entry Text ="{Binding UploadTextFile}" Placeholder="Enter text here" PlaceholderColor="Olive" ></Entry>
 
-            <Button Text="Upload Text File" Command="{Binding UploadTextFileCommand}" />
-            <Button Text="Download Text File" Command="{Binding DownloadTextFileCommand}" />
+            <Button Text="Upload Text" Command="{Binding UploadTextFileCommand}" />
+            <Button Text="Download Text" Command="{Binding DownloadTextFileCommand}" />
             <Label Text= "{Binding DownloadTextFile}" FontSize="Medium" />
+
+            <RefreshView Margin="20" HeightRequest="300" VerticalOptions="Center" Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsBusy}">
+            <ScrollView>
+                <StackLayout>
+                    <ListView
+                Background="Transparent"
+                CachingStrategy="RecycleElement"
+                ItemsSource="{Binding Texts}"
+                RowHeight="60">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="models:Text">
+                                <ViewCell>
+                                    <StackLayout>
+                                        <Label Text="{Binding Content}" TextColor="Black"></Label>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </ScrollView>
+        </RefreshView>
         </StackLayout>
     </ContentPage.Content>
+    
 </ContentPage>

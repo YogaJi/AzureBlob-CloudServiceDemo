@@ -16,3 +16,4 @@ C:\Users\DELL\source\repos\AzureBlob\AzureBlob\AzureBlob\obj\Debug\netstandard2.
 C:\Users\DELL\source\repos\AzureBlob\AzureBlob\AzureBlob\obj\Debug\netstandard2.0\ref\AzureBlob.dll
 C:\Users\DELL\source\repos\AzureBlob\AzureBlob\AzureBlob\obj\Debug\netstandard2.0\AzureBlob.pdb
 C:\Users\DELL\source\repos\AzureBlob\AzureBlob\AzureBlob\obj\Debug\netstandard2.0\AppShell.xaml.g.cs
+C:\Users\DELL\source\repos\AzureBlob\AzureBlob\AzureBlob\obj\Debug\netstandard2.0\AzureBlob.csproj.AssemblyReference.cache

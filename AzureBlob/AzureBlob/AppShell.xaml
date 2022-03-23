@@ -32,8 +32,8 @@
 
     <TabBar>
         <ShellContent Title="Upload Image" Route="UploadPicturePage" ContentTemplate="{DataTemplate views:UploadPicturePage}" ></ShellContent>
-        <ShellContent Title="Upload Text"  Route="UploadTextPage" ContentTemplate="{DataTemplate views:UploadTextPage}" ></ShellContent>
-        <ShellContent Title="Text File"  Route="UploadTextFilePage" ContentTemplate="{DataTemplate views:UploadTextFilePage}" ></ShellContent>
+        <ShellContent Title="Upload Text"  Route="UploadTextFilePage" ContentTemplate="{DataTemplate views:UploadTextFilePage}" ></ShellContent>
+        <ShellContent Title="Upload Text File"  Route="UploadTextPage" ContentTemplate="{DataTemplate views:UploadTextPage}" ></ShellContent>
     </TabBar>
 
 

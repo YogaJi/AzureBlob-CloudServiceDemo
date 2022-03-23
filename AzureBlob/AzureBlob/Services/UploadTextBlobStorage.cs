@@ -102,5 +102,10 @@ namespace AzureBlob.Services
 
             await WriteFileText(texts);
         }
+
+        public Task AddText(string text)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

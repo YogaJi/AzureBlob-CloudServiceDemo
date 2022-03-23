@@ -12,5 +12,6 @@ namespace AzureBlob.Services
         Task<Text> GetText();
         Task AddText(Text text);
         Task UpdateText(Text text);
+        Task AddText(string text);
     }
 }
